@@ -1,0 +1,1306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>OTT Navbar</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<!-- Instrument Sans (cards only) -->
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Inter',sans-serif;
+}
+
+body{
+    background:black;
+    color:white;
+}
+
+.big_div_nav{
+	height:80px;
+	width:100%;
+	background-color:#red;
+
+}
+
+/* NAVBAR */
+nav{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:15px 50px;
+    position:fixed;
+    width:100%;
+    height:80px;
+    top:0;
+    z-index:1000;
+    background:rgba(0,0,0,0.6);
+    backdrop-filter:blur(12px);
+}
+
+/* LEFT */
+.nav-left{
+    display:flex;
+    align-items:center;
+    gap:10px;
+}
+
+.nav-left img{
+    width:45px;
+    height:45px;
+    border-radius:20%;
+}
+
+.logo{
+    font-size:22px;
+    font-weight:700;
+    color:white;
+}
+
+/* MENU */
+.menu{
+    display:flex;
+    align-items:center;
+    gap:30px;
+    transition:0.4s;
+}
+
+.menu a{
+    text-decoration:none;
+    color:white;
+    font-size:15px;
+    position:relative;
+    transition:0.3s;
+}
+
+.menu a::after{
+    content:'';
+    position:absolute;
+    left:0;
+    bottom:-5px;
+    width:0%;
+    height:2px;
+    background:#facc15;
+    transition:0.3s;
+}
+
+.menu a:hover::after{
+    width:100%;
+}
+
+.menu a:hover{
+    color:#facc15;
+}
+
+/* BUTTON */
+.btn{
+    background:#facc15;
+    padding:8px 18px;
+    border-radius:20px;
+    color:black !important;
+    font-weight:600;
+}
+
+.btn:hover{
+    transform:scale(1.05);
+}
+
+/* HAMBURGER */
+.hamburger{
+    display:none;
+    flex-direction:column;
+    cursor:pointer;
+    gap:5px;
+}
+
+.hamburger span{
+    width:25px;
+    height:3px;
+    background:white;
+    transition:0.3s;
+}
+
+/* MOBILE */
+@media(max-width:768px){
+
+    .big_div_nav{
+	height:50px;
+	width:100%;
+	background-color:#red;
+
+    }
+
+    .hamburger{
+        display:flex;
+    }
+
+    .menu{
+        position:absolute;
+        top:70px;
+        right:-100%;
+        flex-direction:column;
+        width:260px;
+        height:100vh;
+        padding-top:40px;
+        gap:25px;
+
+        background:rgba(0,0,0,0.95);
+        backdrop-filter:blur(15px);
+
+        transition:0.4s;
+    }
+
+    .menu.active{
+        right:0;
+    }
+
+    .menu a{
+        font-size:18px;
+    }
+
+    nav{
+        padding:15px 25px;
+    }
+}
+
+/* HAMBURGER ANIMATION */
+.hamburger.active span:nth-child(1){
+    transform:rotate(45deg) translate(5px,5px);
+}
+
+.hamburger.active span:nth-child(2){
+    opacity:0;
+}
+
+.hamburger.active span:nth-child(3){
+    transform:rotate(-45deg) translate(6px,-6px);
+}
+
+/*==== big hero section*/
+
+.big_div_hero{
+  height:600px;
+  width:100%;
+  background-color:#white;
+}
+
+/*============ hero ===============*/
+
+/* HERO */
+.hero{
+    width:100%;
+    height:630px;
+    position:fixed;
+    overflow:hidden;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding-top:80px;
+}
+
+/* DARK OVERLAY */
+.hero::after{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:rgba(0,0,0,0.65);
+    z-index:2;
+}
+
+/* SLIDER WRAPPER (VERTICAL STACK) */
+.slider{
+    position:absolute;
+    top:0;
+    left:0;
+    height:100%;
+    width:100%;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    gap:10px;
+    transform:skewY(-1deg);
+    z-index:1;
+}
+
+/* ROW */
+.row{
+    display:flex;
+    width:max-content;
+    animation:scroll linear infinite;
+}
+
+/* SPEED + DIRECTION */
+.row1{ animation-duration:35s; }
+.row2{ animation-duration:35s; animation-direction:reverse; }
+.row3{ animation-duration:35s; }
+
+@keyframes scroll{
+    0%{ transform:translateX(0); }
+    100%{ transform:translateX(-50%); }
+}
+
+/* CARDS */
+.card{
+    width:350px;
+    height:200px;
+    margin:0 15px;
+    border-radius:16px;
+    overflow:hidden;
+    flex-shrink:0;
+}
+
+.card img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+}
+
+/* HERO CONTENT */
+.hero_content{
+    position:absolute;
+    z-index:3;
+    text-align:center;
+    margin-bottom:100px;
+}
+
+.hero_content h3{
+    color:white;
+    font-size:1.6rem;
+    font-weight:500;
+    margin-bottom:10px;
+}
+
+.hero_content h1{
+    color:#facc15;
+    font-size:3.5rem;
+    font-weight:500;
+    line-height:1.2;
+}
+
+.hero_btn{
+    margin-top:25px;
+    padding:10px 15px;
+    font-size:1.4rem;
+    font-weight:800;
+    background:white;
+    color:black;
+    border:none;
+    border-radius:50px;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+.hero_btn:hover{
+    transform:scale(1.05);
+    background:#facc15;
+}
+
+/* RESPONSIVE */
+@media(max-width:768px){
+
+    .hero{
+	height:600px;
+        padding-top:10px;
+
+    }
+
+    .hero_content h1{ 
+	font-size:2rem;
+    }
+
+   .hero_content h3{
+	font-size:1.1rem;
+   }
+
+    .card{
+         width:200px; 
+         height:180px; 
+
+   }
+}
+
+
+
+/* ===== premium card CONTAINER ===== */
+
+.premium_content_big_Container{
+   height:550px;
+   width:100%;
+   background-color:#white;
+   display:flex;
+   justify-content:space-evenly;
+   align-items:center;
+      margin-top:10px;
+}
+
+/* CONTAINER */
+.premium_container{
+    width:100%;
+    max-width:1100px;
+    padding:0 20px;
+}
+
+/* SLIDER */
+.slider12{
+    display:flex;
+    gap:30px;
+    justify-content:center;
+    align-items:center;
+}
+
+/* APPLY INSTRUMENT SANS */
+.slider12,
+.cards12,
+.cards12 *{
+    font-family:'Instrument Sans', sans-serif;
+}
+
+/* CARD */
+.cards12{
+    flex:1;
+    min-width:380px;
+    max-width:420px;
+    background:linear-gradient(145deg,#0f172a,#020617);
+    border-radius:20px;
+    padding:22px;
+    color:#fff;
+    position:relative;
+    transition: all 0.4s ease;
+    transform:scale(0.92);
+    opacity:0.7;
+    cursor:pointer;
+    overflow:hidden;
+}
+
+/* BORDER */
+.cards12::before{
+    content:"";
+    position:absolute;
+    
+    border-radius:20px;
+    padding:1px;
+    background:linear-gradient(135deg,#FFD400 20%, transparent 60%);
+    -webkit-mask:
+        linear-gradient(#000 0 0) content-box,
+        linear-gradient(#000 0 0);
+    -webkit-mask-composite:xor;
+    mask-composite:exclude;
+}
+
+/* ACTIVE CARD (MIDDLE) */
+.cards12.active{
+    transform:scale(1.08);
+    opacity:1;
+    z-index:3;
+    box-shadow:
+        0 20px 60px rgba(0,0,0,0.8),
+        0 0 25px rgba(255,212,0,0.25),
+        0 0 60px rgba(255,212,0,0.15);
+}
+
+/* PREMIUM HOVER EFFECT */
+.cards12.active:hover{
+    transform:scale(1.12) translateY(-8px);
+    box-shadow:
+        0 25px 80px rgba(0,0,0,0.9),
+        0 0 40px rgba(255,212,0,0.45),
+        0 0 100px rgba(255,212,0,0.25);
+}
+
+/* GOLDEN GLOW BACKGROUND */
+.cards12.active::after{
+    content:"";
+    position:absolute;
+    inset:-2px;
+    border-radius:22px;
+    z-index:-1;
+    background:radial-gradient(circle at center,
+        rgba(255,212,0,0.35),
+        transparent 70%);
+    opacity:0.6;
+    transition:0.4s;
+}
+
+/* STRONGER GLOW ON HOVER */
+.cards12.active:hover::after{
+    opacity:1;
+    filter:blur(8px);
+}
+
+/* ANIMATED BORDER */
+.cards12.active::before{
+    background:linear-gradient(
+        120deg,
+        transparent,
+        #FFD400,
+        transparent,
+        #f59e0b,
+        transparent
+    );
+    background-size:200% 200%;
+    animation:goldFlow 4s linear infinite;
+}
+
+@keyframes goldFlow{
+    0%{background-position:0% 50%;}
+    100%{background-position:200% 50%;}
+}
+
+/* BADGE */
+.badge{
+    background:linear-gradient(135deg,#FFD400,#f59e0b);
+    color:#000;
+    padding:6px 14px;
+    border-radius:20px;
+    font-size:12px;
+    font-weight:600;
+    margin-bottom:12px;
+    display:inline-block;
+}
+
+/* IMAGE */
+.image-box{
+    height:150px;
+    border-radius:12px;
+    margin-bottom:15px;
+    background:url('https://picsum.photos/400/300') center/cover;
+}
+
+/* PRICE */
+.price{
+    font-size:30px;
+    font-weight:700;
+}
+
+/* VALIDITY */
+.validity{
+    font-size:13px;
+    color:#9ca3af;
+    margin-bottom:15px;
+}
+
+/* FEATURES */
+.features{
+    list-style:none;
+    margin-bottom:20px;
+}
+
+.features li{
+    margin-bottom:10px;
+    font-size:14px;
+}
+
+.features li::before{
+    content:"✔ ";
+    color:#9ca3af;
+}
+
+/* BUTTONS */
+.explore-btn{
+    width:100%;
+    padding:12px;
+    margin-bottom:10px;
+    border:none;
+    border-radius:10px;
+    background:#ffffff;
+    color:#000;
+    font-weight:600;
+    cursor:pointer;
+}
+
+.btn12{
+    width:100%;
+    padding:12px;
+    border:none;
+    border-radius:10px;
+    background:linear-gradient(135deg,#FFD400,#f59e0b);
+    font-weight:600;
+    cursor:pointer;
+}
+
+/* MOBILE */
+@media(max-width:600px){
+    body{
+        align-items:flex-start;
+        padding-top:40px;
+    }
+
+   .premium_content_big_Container{
+	margin-top:500px;
+   }
+
+    .slider12{
+        flex-direction:column;
+    }
+
+    .cards12{
+        width:95%;
+        min-width:auto;
+        max-width:none;
+        transform:scale(1) !important;
+        opacity:1 !important;
+    }
+}
+
+
+/*=============Exclusive_content_big_container===============*/
+
+.Exclusive_content_big_container{
+    height:1300px;
+    width:100%;
+    background-color:#white;
+    margin-top:20px;
+}
+
+.E_container{
+    width:90%;
+    margin:auto;
+    padding:40px 0;
+}
+
+.E_section{
+    margin-bottom:60px;
+}
+
+.E_section h2{
+    font-size:1.8rem;
+    font-weight:400;
+    margin-bottom:10px;
+}
+
+.E_section p{
+    font-size:1rem;
+    color:#aaa;
+    line-height:1.6;
+    max-width:600px;
+}
+
+/* CARD */
+.card-box{
+    position:relative;
+    margin-top:20px;
+    height:450px;
+    border-radius:14px;
+    border:2px solid #f5c518;
+    overflow:hidden;
+    background:#111;
+    cursor:pointer;
+}
+
+/* SLIDES */
+.slides{
+    display:flex;
+    height:100%;
+    transition:transform 0.5s ease;
+}
+
+.slide{
+    min-width:100%;
+    height:100%;
+}
+
+.slide img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+}
+
+/* CLICK ZONES */
+.click-zone{
+    position:absolute;
+    top:0;
+    width:50%;
+    height:100%;
+    z-index:2;
+}
+
+.click-left{
+    left:0;
+}
+
+.click-right{
+    right:0;
+}
+
+/* OPTIONAL subtle hover hint */
+.card-box:hover::after{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:linear-gradient(to right, rgba(0,0,0,0.2), transparent, rgba(0,0,0,0.2));
+    pointer-events:none;
+}
+
+/* RESPONSIVE */
+@media(max-width:768px){
+    .Exclusive_content_big_container{
+        margin-top:500px;
+        height:1000px;
+    }
+  
+    .E_container{
+        width:90%;
+    }
+
+    .card-box{
+        height:280px;
+    }
+}
+
+
+/*============animated_3card_loops===================*/
+
+.animated_3card_loops{
+    height:500px;
+    width:100%;
+}
+
+/* Container */
+.ultra-premium-fullwidth-wrapper-container-unique{
+    width:100%;
+    overflow:hidden;
+    padding:30px 0;
+    background-color:#red;
+}
+
+/* Heading */
+.ultra-premium-heading-text-unique{
+    text-align:center;
+    margin-bottom:25px;
+    font-weight:600;
+}
+
+/* Row Wrapper */
+.ultra-premium-infinite-row-viewport-unique{
+    overflow:hidden;
+    width:100%;
+    margin-bottom:15px;
+}
+
+/* Track */
+.ultra-premium-infinite-track-flex-container-unique{
+    display:flex;
+    width:max-content;
+    gap:16px;
+
+    animation: ultraPremiumInfiniteScrollLeftAnimation 60s linear infinite;
+    will-change: transform;
+}
+
+/* Cards */
+.ultra-premium-card-box-item-design-unique{
+    min-width:180px;
+    height:110px;
+    border-radius:14px;
+    border:1px solid #bfa100;
+    overflow:hidden;
+    background:#111;
+    flex-shrink:0;
+    transition:0.3s;
+}
+
+.ultra-premium-card-box-item-design-unique:hover{
+    transform:translateY(-6px) scale(1.05);
+    box-shadow:0 0 18px rgba(191,161,0,0.6);
+}
+
+/* Image */
+.card-img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+}
+
+/* Animation */
+@keyframes ultraPremiumInfiniteScrollLeftAnimation{
+    0%{
+        transform:translate3d(0,0,0);
+    }
+    100%{
+        transform:translate3d(-50%,0,0);
+    }
+}
+
+/* Reverse row */
+.ultra-premium-reverse-scroll-animation-unique{
+    animation-direction: reverse;
+}
+
+/* CTA */
+.ultra-premium-bottom-section-cta-wrapper-unique{
+    text-align:center;
+    margin-top:25px;
+}
+
+.ultra-premium-bottom-section-cta-wrapper-unique h2{
+   font-weight:500;
+}
+
+.ultra-premium-bottom-section-cta-wrapper-unique p{
+    color:#aaa;
+    margin:10px 0;
+}
+
+.ultra-premium-bottom-button-unique{
+    padding:10px 20px;
+    border-radius:22px;
+    border:none;
+    background:#fff;
+    color:#000;
+    font-weight:600;
+    cursor:pointer;
+}
+
+.ultra-premium-bottom-button-unique:hover{
+    background:#bfa100;
+}
+
+/* Responsive */
+@media(max-width:600px){
+    .ultra-premium-card-box-item-design-unique{
+        min-width:140px;
+        height:95px;
+    }
+}
+
+
+
+
+
+/*============footer=============*/
+
+/* ==================FOOTER ==================*/
+.footer{
+    background:black;
+    color:#ccc;
+    padding:60px 20px 20px;
+    margin-top:50px;
+}
+
+/* CONTAINER */
+.footer_container{
+    max-width:1200px;
+    margin:auto;
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:40px;
+}
+
+/* COLUMN */
+.footer_col h3{
+    color:white;
+    margin-bottom:15px;
+}
+
+.footer_logo{
+    color:white;
+    font-size:1.8rem;
+    margin-bottom:10px;
+}
+
+/* TEXT */
+.footer_col p{
+    font-size:14px;
+    line-height:1.6;
+}
+
+/* LINKS */
+.footer_col ul{
+    list-style:none;
+}
+
+.footer_col ul li{
+    margin-bottom:10px;
+}
+
+.footer_col ul li a{
+    text-decoration:none;
+    color:#aaa;
+    transition:0.3s;
+}
+
+/* HOVER */
+.footer_col ul li a:hover{
+    color:#facc15;
+}
+
+/* SOCIAL */
+.socials{
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+}
+
+.socials a{
+    text-decoration:none;
+    color:#aaa;
+    transition:0.3s;
+}
+
+.socials a:hover{
+    color:#facc15;
+}
+
+/* BOTTOM */
+.footer_bottom{
+    text-align:center;
+    margin-top:40px;
+    padding-top:20px;
+    border-top:1px solid rgba(255,255,255,0.1);
+    font-size:14px;
+}
+
+/* RESPONSIVE */
+@media(max-width:900px){
+    .footer_container{
+        grid-template-columns:repeat(2,1fr);
+    }
+}
+
+@media(max-width:600px){
+    .footer_container{
+        grid-template-columns:repeat(2,1fr);
+        text-align:center;
+    }
+
+    .socials{
+        align-items:center;
+    }
+}
+
+
+
+/* ZOOM REVEAL INITIAL */
+.zoom-reveal{
+    opacity:0;
+    transform:scale(0.85);
+    transition:
+        transform 0.8s cubic-bezier(0.22,1,0.36,1),
+        opacity 0.8s ease;
+}
+
+/* WHEN VISIBLE */
+.zoom-reveal.active{
+    opacity:1;
+    transform:scale(1);
+}
+
+/* OPTIONAL stagger delays */
+.zoom-delay-1{ transition-delay:0.1s; }
+.zoom-delay-2{ transition-delay:0.2s; }
+.zoom-delay-3{ transition-delay:0.3s; }
+.zoom-delay-4{ transition-delay:0.4s; }
+</style>
+</head>
+<body>
+<div class="big_div_nav">
+<!-- NAVBAR -->
+<nav>
+
+    <div class="nav-left">
+        <img src="image/logo.jpeg">
+        <div class="logo">Sunlike Study</div>
+    </div>
+
+    <div class="menu" id="menu">
+        <a href="#">Home</a>
+        <a href="#">Courses</a>
+        <a href="#">Demo</a>
+        <a href="#">About</a>
+        <a class="btn" href="#">Explore App</a>
+    </div>
+
+    <!-- HAMBURGER -->
+    <div class="hamburger" id="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+
+</nav>
+</div><!--=================navbar ends here============-->
+
+<!--  hero section -->
+<div class="big_div_hero">
+<!-- ============== hero section ===================-->
+
+
+<section class="hero">
+
+<!-- BACKGROUND SLIDER -->
+<div class="slider">
+
+    <!-- ROW 1 -->
+    <div class="row row1">
+        <div class="card"><img src="https://picsum.photos/id/1011/400/600"></div>
+        <div class="card"><img src="https://picsum.photos/id/1015/400/600"></div>
+        <div class="card"><img src="https://picsum.photos/id/1016/400/600"></div>
+        <div class="card"><img src="https://picsum.photos/id/1020/400/600"></div>
+
+        <div class="card"><img src="https://picsum.photos/id/1011/400/600"></div>
+        <div class="card"><img src="https://picsum.photos/id/1015/400/600"></div>
+        <div class="card"><img src="https://picsum.photos/id/1016/400/600"></div>
+        <div class="card"><img src="https://picsum.photos/id/1020/400/600"></div>
+    </div>
+
+    <!-- ROW 2 -->
+    <div class="row row2">
+        <div class="card"><img src="https://picsum.photos/id/1035/400/600"></div>
+        <div class="card"><img src="https://picsum.photos/id/1040/400/600"></div>
+        <div class="card"><img src="https://picsum.photos/id/1043/400/600"></div>
+        <div class="card"><img src="https://picsum.photos/id/1050/400/600"></div>
+
+        <div class="card"><img src="https://picsum.photos/id/1035/400/600"></div>
+        <div class="card"><img src="https://picsum.photos/id/1040/400/600"></div>
+        <div class="card"><img src="https://picsum.photos/id/1043/400/600"></div>
+        <div class="card"><img src="https://picsum.photos/id/1050/400/600"></div>
+    </div>
+
+    <!-- ROW 3 -->
+    <div class="row row3">
+        <div class="card"><img src="https://picsum.photos/id/1069/400/600"></div>
+        <div class="card"><img src="https://picsum.photos/id/1074/400/600"></div>
+        <div class="card"><img src="https://picsum.photos/id/1080/400/600"></div>
+        <div class="card"><img src="https://picsum.photos/id/1084/400/600"></div>
+
+        <div class="card"><img src="https://picsum.photos/id/1069/400/600"></div>
+        <div class="card"><img src="https://picsum.photos/id/1074/400/600"></div>
+        <div class="card"><img src="https://picsum.photos/id/1080/400/600"></div>
+        <div class="card"><img src="https://picsum.photos/id/1084/400/600"></div>
+    </div>
+
+</div>
+
+<!-- HERO TEXT -->
+<div class="hero_content">
+    <h3>Welcome To Sunlike Study &reg;</h3>
+    <h1>Stop Memorizing.</h1>
+    <h1>Start Visualizing.</h1>
+    <button class="hero_btn">Get Started</button>
+</div>
+</section>
+</div> <!--========== hero section ends here -->
+<script>
+
+const hamburger = document.getElementById("hamburger");
+const menu = document.getElementById("menu");
+
+hamburger.addEventListener("click", () => {
+    hamburger.classList.toggle("active");
+    menu.classList.toggle("active");
+});
+
+</script>
+
+<div class="premium_content_big_Container">
+<div class="premium_container">
+<div class="slider12" id="slider12">
+
+    <div class="cards12 zoom-reveal">
+        <div class="badge">Class 10 Premium</div>
+        <div class="image-box"></div>
+        <div class="price">₹899</div>
+        <div class="validity">Valid Till 2027</div>
+        <ul class="features">
+            <li>Exclusive Content</li>
+            <li>High Quality Animation</li>
+            <li>Exam Ready</li>
+        </ul>
+        <button class="explore-btn">Explore More</button>
+        <button class="btn12">Buy Now</button>
+    </div>
+
+    <div class="cards12 active zoom-reveal">
+        <div class="badge">Most Popular</div>
+        <div class="image-box"></div>
+        <div class="price">₹999</div>
+        <div class="validity">Valid Till 2027</div>
+        <ul class="features">
+            <li>Full Course Coverage</li>
+            <li>Premium Notes</li>
+            <li>Doubt Support</li>
+        </ul>
+        <button class="explore-btn">Explore More</button>
+        <button class="btn12">Buy Now</button>
+    </div>
+
+    <div class="cards12 zoom-reveal">
+        <div class="badge">Class 10 Premium</div>
+        <div class="image-box"></div>
+        <div class="price">₹799</div>
+        <div class="validity">Valid Till 2027</div>
+        <ul class="features">
+            <li>Recorded Lectures</li>
+            <li>Practice Questions</li>
+            <li>Strategy</li>
+        </ul>
+        <button class="explore-btn">Explore More</button>
+        <button class="btn12">Buy Now</button>
+    </div>
+
+</div>
+</div>
+
+</div><!-- premium_content_big_Container ends here -->
+<script>
+
+const slider12 = document.getElementById("slider12");
+
+function updateActive(){
+    const cards12 = document.querySelectorAll(".cards12");
+    cards12.forEach(c => c.classList.remove("active"));
+    if(cards12[1]) cards12[1].classList.add("active");
+}
+
+slider12.addEventListener("click", (e)=>{
+    const clicked = e.target.closest(".cards12");
+    if(!clicked) return;
+
+    if(window.innerWidth <= 600) return;
+
+    const cards12 = Array.from(slider12.children);
+    const index = cards12.indexOf(clicked);
+
+    if(index === 1) return;
+
+    slider12.removeChild(clicked);
+    slider12.insertBefore(clicked, slider12.children[1]);
+
+    setTimeout(updateActive, 50);
+});
+
+window.addEventListener("load", updateActive);
+
+</script>
+
+<div class="Exclusive_content_big_container">
+<div class="E_container zoom-reveal">
+
+    <!-- SECTION 1 -->
+    <div class="E_section zoom-reveal">
+        <h2>Exclusive Movie-like lectures</h2>
+        <p>
+            Premium borders emphasize key visuals for immersive,
+            story-driven experiences.
+        </p>
+
+        <div class="card-box zoom-reveal">
+            <div class="slides">
+                <div class="slide"><img src="https://picsum.photos/id/1015/800/500"></div>
+                <div class="slide"><img src="https://picsum.photos/id/1016/800/500"></div>
+                <div class="slide"><img src="https://picsum.photos/id/1018/800/500"></div>
+                <div class="slide"><img src="https://picsum.photos/id/1020/800/500"></div>
+            </div>
+
+            <div class="click-zone click-left"></div>
+            <div class="click-zone click-right"></div>
+        </div>
+    </div>
+
+    <!-- SECTION 2 -->
+    <div class="E_section zoom-reveal">
+        <h2>Less time, More Results.</h2>
+        <p>
+            During exam time pressure, we focused on concepts,
+            rapid revision, and proven results. That's why it
+            stands unbeatable during exams.
+        </p>
+
+        <div class="card-box zoom-reveal">
+            <div class="slides">
+                <div class="slide"><img src="https://picsum.photos/id/1025/800/500"></div>
+                <div class="slide"><img src="https://picsum.photos/id/1035/800/500"></div>
+                <div class="slide"><img src="https://picsum.photos/id/1040/800/500"></div>
+                <div class="slide"><img src="https://picsum.photos/id/1045/800/500"></div>
+            </div>
+
+            <div class="click-zone click-left"></div>
+            <div class="click-zone click-right"></div>
+        </div>
+    </div>
+
+</div>
+</div><!--Exclusive_content_big_container ends here-->
+<script>
+document.querySelectorAll(".card-box").forEach(card => {
+    const slides = card.querySelector(".slides");
+    const total = card.querySelectorAll(".slide").length;
+
+    let index = 0;
+
+    card.querySelector(".click-right").addEventListener("click", () => {
+        index = (index + 1) % total;
+        slides.style.transform = `translateX(-${index * 100}%)`;
+    });
+
+    card.querySelector(".click-left").addEventListener("click", () => {
+        index = (index - 1 + total) % total;
+        slides.style.transform = `translateX(-${index * 100}%)`;
+    });
+});
+</script>
+
+
+<!-- infinite cards starts from here -->
+<div class="ultra-premium-fullwidth-wrapper-container-unique zoom-reveal">
+
+    <h3 class="ultra-premium-heading-text-unique">
+        Faster Learning in Less Time.
+    </h3>
+
+    <!-- Row 1 -->
+    <div class="ultra-premium-infinite-row-viewport-unique">
+        <div class="ultra-premium-infinite-track-flex-container-unique" id="rowOneTrackUniqueId"></div>
+    </div>
+
+    <!-- Row 2 -->
+    <div class="ultra-premium-infinite-row-viewport-unique">
+        <div class="ultra-premium-infinite-track-flex-container-unique ultra-premium-reverse-scroll-animation-unique" id="rowTwoTrackUniqueId"></div>
+    </div>
+
+    <!-- CTA -->
+    <div class="ultra-premium-bottom-section-cta-wrapper-unique">
+        <h2>Explore More or Buy Now</h2>
+        <p>Premium content.<br>No clutter. Only clarity.</p>
+        <button class="ultra-premium-bottom-button-unique">Download App</button>
+    </div>
+
+</div>
+<!-- animated loops end here -->
+
+<script>
+
+/* 🔥 REPLACE YOUR IMAGES HERE */
+const images = [
+    "https://picsum.photos/id/1015/400/300",
+    "https://picsum.photos/id/1016/400/300",
+    "https://picsum.photos/id/1018/400/300",
+    "https://picsum.photos/id/1020/400/300",
+    "https://picsum.photos/id/1024/400/300",
+    "https://picsum.photos/id/1025/400/300",
+    "https://picsum.photos/id/1035/400/300",
+    "https://picsum.photos/id/1039/400/300"
+];
+
+/* Generate cards */
+function createInfiniteRowCards(trackId, count){
+    const track = document.getElementById(trackId);
+
+    let content = "";
+
+    for(let i=0;i<count;i++){
+        content += `
+        <div class="ultra-premium-card-box-item-design-unique">
+            <img src="${images[i % images.length]}" class="card-img"/>
+        </div>
+        `;
+    }
+
+    // duplicate for seamless loop
+    track.innerHTML = content + content;
+}
+
+/* Increase count if screen feels empty */
+createInfiniteRowCards("rowOneTrackUniqueId", 12);
+createInfiniteRowCards("rowTwoTrackUniqueId", 12);
+
+</script>
+<!--============footer==========-->
+
+<footer class="footer zoom-reveal">
+
+    <div class="footer_container">
+
+        <!-- LINKS -->
+        <div class="footer_col">
+            <h3>Explore</h3>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Courses</a></li>
+                <li><a href="#">Lectures</a></li>
+                <li><a href="#">Premium</a></li>
+            </ul>
+        </div>
+
+        <!-- SUPPORT -->
+        <div class="footer_col">
+            <h3>Support</h3>
+            <ul>
+                <li><a href="#">Help Center</a></li>
+                <li><a href="#">Contact</a></li>
+                <li><a href="#">Privacy Policy</a></li>
+                <li><a href="#">Terms</a></li>
+            </ul>
+        </div>
+
+        
+
+    </div>
+
+    <!-- BOTTOM -->
+    <div class="footer_bottom">
+        <p>© 2026 SunLike Study. All rights reserved.</p>
+    </div>
+
+</footer>
+
+
+<!-- SMOOTH HERO SCRIPT -->
+<script>
+const hero = document.querySelector(".hero");
+
+let current = 0;
+let target = 0;
+
+function lerp(start, end, factor){
+    return start + (end - start) * factor;
+}
+
+function animate(){
+    target = window.scrollY;
+
+    // smoothness control (0.11 = ultra smooth)
+    current = lerp(current, target, 0.11);
+
+    const maxScroll = window.innerHeight;
+    let progress = current / maxScroll;
+
+    if(progress > 1) progress = 1;
+
+    hero.style.opacity = 1 - progress;
+    //hero.style.transform = `scale(${1 - progress * 0.12})`;
+    hero.style.filter = `blur(${progress * 12}px)`;
+
+    requestAnimationFrame(animate);
+}
+
+animate();
+</script>
+
+
+<!-- zoom in effect-->
+<script>
+const zoomObserver = new IntersectionObserver((entries)=>{
+    entries.forEach(entry=>{
+        if(entry.isIntersecting){
+            entry.target.classList.add("active");
+        } else {
+            entry.target.classList.remove("active"); // 👈 THIS IS THE KEY
+        }
+    });
+},{
+    threshold:0.15
+});
+
+document.querySelectorAll(".zoom-reveal").forEach(el=>{
+    zoomObserver.observe(el);
+});
+</script>
+
+</body>
+</html>
